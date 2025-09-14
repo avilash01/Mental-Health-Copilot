@@ -9,14 +9,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Check if user is logged in -->
     <script>
         if (!localStorage.getItem('isLoggedIn')) {
             window.location.href = 'auth.html';
         }
     </script>
 
-    <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
@@ -37,8 +35,6 @@
         </div>
     </header>
 
-    <!-- Rest of the HTML content remains the same as in the original code -->
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Your Personal Mental Health Companion</h1>
@@ -50,7 +46,6 @@
         </div>
     </section>
 
-    <!-- AI Companion Section -->
     <section class="ai-companion" id="companion">
         <div class="container">
             <div class="companion-container">
@@ -84,7 +79,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
@@ -117,7 +111,6 @@
         </div>
     </section>
 
-    <!-- Dashboard -->
     <section class="dashboard" id="dashboard">
         <div class="container">
             <div class="dashboard-header">
@@ -129,9 +122,7 @@
             </div>
 
             <div class="dashboard-grid">
-                <!-- Left Column -->
                 <div>
-                    <!-- Mood Check-in Card -->
                     <div class="dashboard-card" style="margin-bottom: 30px;">
                         <h3><i class="fas fa-smile"></i> Mood Check-in</h3>
                         <div class="mood-options">
@@ -161,7 +152,6 @@
                         <button class="btn btn-primary" onclick="saveJournalEntry()">Save Entry</button>
                     </div>
 
-                    <!-- Coping Exercises Card -->
                     <div class="dashboard-card">
                         <h3><i class="fas fa-wind"></i> Coping Exercises</h3>
                         <div class="exercises-grid">
@@ -189,7 +179,6 @@
                     </div>
                 </div>
 
-                <!-- Right Column - Chatbot -->
                 <div class="dashboard-card chatbot-container">
                     <div class="chatbot-header">
                         <h3><i class="fas fa-robot"></i> MindfulMate AI Companion</h3>
@@ -211,7 +200,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -256,7 +244,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Set user name from localStorage
         document.addEventListener('DOMContentLoaded', function() {
             const userEmail = localStorage.getItem('userEmail');
             if (userEmail) {
@@ -284,7 +271,6 @@
                 return;
             }
             alert('Login successful!');
-            // Redirect to dashboard or homepage
         }
 
         function validateSignup() {
@@ -298,7 +284,6 @@
                 return;
             }
             alert('Signup successful!');
-            // Redirect to dashboard or homepage
         }
 
         function closeModal(modalId) {
@@ -311,15 +296,12 @@
         }
 
         function googleLogin() {
-            // Simulate Google login dialog
             alert('Opening Google login...');
             // Here, you would integrate Google OAuth API
         }
 
         function facebookLogin() {
-            // Simulate Facebook login dialog
             alert('Opening Facebook login...');
-            // Here, you would integrate Facebook OAuth API
         }
     </script>
 </body>
