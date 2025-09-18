@@ -6,7 +6,6 @@ const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const companionQuery = document.getElementById('companion-query');
 
-// Sample responses for the chatbot
 const botResponses = {
     greeting: ["Hello! How are you feeling today?", "Hi there! What's on your mind?", "Hello! I'm here to listen. How are you doing?"],
     stress: ["I'm sorry to hear you're feeling stressed. Have you tried deep breathing exercises?", "Stress can be challenging. Would you like to try a quick mindfulness exercise?", "I understand stress can be difficult. Remember to take breaks and be kind to yourself."],
@@ -15,7 +14,6 @@ const botResponses = {
     default: ["I'm here to listen. Can you tell me more about how you're feeling?", "Thank you for sharing. How has that been affecting you?", "I appreciate you opening up. Would you like to try a coping strategy that might help?"]
 };
 
-// Modal functions
 function openModal(modalId) {
     document.getElementById(modalId).style.display = 'flex';
 }
@@ -29,7 +27,6 @@ function switchAuthModal(fromId, toId) {
     openModal(toId);
 }
 
-// Auth functions
 function login() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -39,7 +36,6 @@ function login() {
         return;
     }
     
-    // Simulate login process
     document.getElementById('user-name').textContent = email.split('@')[0];
     closeModal('loginModal');
     showDashboard();
@@ -55,7 +51,6 @@ function register() {
         return;
     }
     
-    // Simulate registration process
     document.getElementById('user-name').textContent = name;
     closeModal('registerModal');
     showDashboard();
@@ -76,13 +71,11 @@ function showDashboard() {
     dashboard.style.display = 'block';
 }
 
-// Mood journal functions
 function selectMood(element, moodValue) {
     // Remove selected class from all options
     const options = document.querySelectorAll('.mood-option');
     options.forEach(opt => opt.classList.remove('selected'));
     
-    // Add selected class to clicked option
     element.classList.add('selected');
 }
 
@@ -95,13 +88,11 @@ function saveJournalEntry() {
         return;
     }
     
-    // Simulate saving entry
     alert('Journal entry saved successfully!');
     document.querySelector('.journal-textarea').value = '';
     selectedMood.classList.remove('selected');
 }
 
-// Exercise functions
 function startExercise(type) {
     const exercises = {
         breathing: 'Deep Breathing Exercise: Inhale for 4 counts, hold for 4, exhale for 6. Repeat for 5 minutes.',
@@ -116,18 +107,14 @@ function showTherapistReferral() {
     alert('Therapist referral feature would connect you with licensed mental health professionals in your area.');
 }
 
-// Chatbot functions
 function sendMessage() {
     const message = userInput.value.trim();
     if (message === '') return;
     
-    // Add user message to chat
     addMessage(message, 'user');
     userInput.value = '';
     
-    // Simulate AI thinking
     setTimeout(() => {
-        // Generate bot response based on user input
         let response;
         if (message.toLowerCase().includes('stress') || message.toLowerCase().includes('stressed')) {
             response = getRandomResponse(botResponses.stress);
@@ -165,7 +152,6 @@ function handleKeyPress(event) {
     }
 }
 
-// AI Companion functions
 function usePrompt(prompt) {
     companionQuery.value = prompt;
 }
@@ -174,16 +160,13 @@ function sendCompanionQuery() {
     const query = companionQuery.value.trim();
     if (query === '') return;
     
-    // Show loading state
     companionQuery.value = 'Thinking...';
     companionQuery.disabled = true;
     
-    // Simulate AI processing
     setTimeout(() => {
         companionQuery.disabled = false;
         companionQuery.value = '';
         
-        // Show response based on query
         let response;
         if (query.includes('anxious')) {
             response = "I understand anxiety can be challenging. Have you tried the 4-7-8 breathing technique? Inhale for 4 seconds, hold for 7, exhale for 8. Repeat 4 times. This can help calm your nervous system.";
@@ -197,7 +180,6 @@ function sendCompanionQuery() {
             response = "I'm here to support your mental health journey. You can ask me about coping strategies, mood tracking, breathing exercises, or mental health resources. How can I help you today?";
         }
         
-        // Show response in an alert (in a real app, this would be displayed in the UI)
         alert("MindfulMate AI Response:\n\n" + response);
     }, 1500);
 }
@@ -216,7 +198,6 @@ function scrollToCompanion() {
     document.getElementById('companion').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Close modal if clicked outside
 window.onclick = function(event) {
     if (event.target === loginModal) {
         closeModal('loginModal');
@@ -226,7 +207,6 @@ window.onclick = function(event) {
     }
 };
 
-// Check authentication on page load
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
         if (!localStorage.getItem('isLoggedIn')) {
